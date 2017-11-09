@@ -1,0 +1,29 @@
+@import '~@angular/material/theming';
+@import './variables.scss';
+// Include non-theme styles for core.
+@include mat-core();
+
+
+$map-primary: (
+    100: #dde6f3,
+    500: $primary,
+    contrast: (
+        500: white
+    )
+);
+
+$map-secondary: (
+    100: #dde6f3,
+    500: $secondary,
+    contrast: (
+        500: white
+    )
+);
+
+$app-primary: mat-palette($map-primary);
+$app-accent:  mat-palette($map-secondary);
+$app-warn:    mat-palette($mat-red);
+
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
+
+@include angular-material-theme($app-theme);

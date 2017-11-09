@@ -1,0 +1,21 @@
+mat-toolbar {
+  position: fixed;
+  top: 0;
+  z-index: 999;
+}
+
+.logo-toolbar {
+  height: 30px;
+  margin-top: 5px;
+}
+
+// Fills the spaces in between elements evenly.
+// Useful with layouts where elements need to be aligned left, center & right respectively.
+.fill-remaining-space {
+  flex: 1 1 auto;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 63px 10% 0;
+}

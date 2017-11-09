@@ -1,0 +1,16 @@
+/* Color variables */
+$primary: #003366;
+$secondary: #0099CC;
+$tertiary: #007B87;
+
+/* Screen width sizes */
+$screen-small: "only screen and (max-width : 768px)";
+$screen-medium: "only screen and (min-width : 768px) and (max-width : 1024px)";
+$screen-large: "only screen and (min-width : 1024px)";
+
+$screen-not-small: "only screen and (min-width : 768px)";
+$screen-not-large: "only screen and (max-width : 1024px)";
+    
+$break-small: 480px;
+$break-medium: 768px;
+$break-large: 1024px;
