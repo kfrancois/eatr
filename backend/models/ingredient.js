@@ -5,4 +5,10 @@ let IngredientSchema = new mongoose.Schema({
     amount: Number
 });
 
-mongoose.model('ingredient', IngredientSchema);
+IngredientSchema.pre('remove', function (next) {
+    this.model('Recipe').remove({
+        ingredients: this_.id
+    }, next);
+})
+
+mongoose.model('Ingredient', IngredientSchema);

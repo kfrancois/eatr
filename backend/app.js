@@ -3,8 +3,17 @@ var path = require('path');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var session = require('express-session');
+//var session = require('express-session');
+var bluebird = require('bluebird');
+var mongoose = require('mongoose');
+mongoose.Promise = bluebird.Promise;
+mongoose.connect('mongodb://localhost/db', {
+  useMongoClient: true
+});
 
+require('./models/recipe');
+require('./models/step');
+require('./models/ingredient');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -19,11 +28,11 @@ app.set('view engine', 'jade');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 
-app.use(session({
+/*app.use(session({
   secret: 'sekreet',
   resave: true,
   saveUninitialized: false
-}));
+}));*/
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -33,7 +42,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
+//app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -50,7 +59,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.render("error");
 });
 
 module.exports = app;

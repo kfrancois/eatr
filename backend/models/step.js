@@ -4,4 +4,4 @@ let StepSchema = new mongoose.Schema({
     instruction: String
 });
 
-mongoose.model('step', StepSchema);
+mongoose.model('Step', StepSchema);
