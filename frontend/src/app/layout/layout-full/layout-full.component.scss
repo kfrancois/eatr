@@ -1,0 +1,44 @@
+@import '../../../styles/variables.scss';
+mat-toolbar {
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+}
+
+.first-button {
+  margin-right: 40px;
+}
+
+.last-button {
+  margin-left: 20px;
+}
+
+.mat-icon {
+  margin: 0 5px;
+}
+
+.toolbar-side {
+  width: 150px;
+  &.right {
+    text-align: right;
+  }
+}
+
+.clickable {
+  line-height: 40px;
+  height: 40px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.logo-toolbar {
+  height: 30px;
+}
+
+.content {
+  margin: 0 auto;
+  padding: 0 10%;
+}
+
+span:focus {
+  outline: none !important;
+}

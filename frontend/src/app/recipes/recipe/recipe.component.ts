@@ -3,12 +3,8 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-recipe',
-  template: `
-    <p>
-      recipe works!
-    </p>
-  `,
-  styles: [],
+  templateUrl: 'recipe.component.html',
+  styleUrls: ['recipe.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class RecipeComponent implements OnInit {

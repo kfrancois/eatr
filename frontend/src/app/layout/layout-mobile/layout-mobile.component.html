@@ -1,0 +1,55 @@
+<mat-sidenav-container>
+  <mat-toolbar color="primary">
+    <span mat-icon-button *ngIf="userLoggedIn()" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </span>
+
+    <span class="fill-remaining-space"></span>
+
+    <span>
+      <img class="logo-toolbar" src="../assets/logo.png" alt="Eat shit">
+    </span>
+
+    <span class="fill-remaining-space"></span>
+
+    <span *ngIf="userLoggedIn()" class="occupy-space"></span>
+  </mat-toolbar>
+
+  <mat-sidenav #sidenav>
+
+    <div class="sidebar-header">
+      <p id="username">username</p>
+    </div>
+
+    <mat-nav-list class="nat-top" (click)="sidenav.close()">
+      <mat-list-item routerLinkActive="active" routerLink="home">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </mat-list-item>
+      <mat-list-item routerLinkActive="active" routerLink="recipes">
+        <mat-icon>restaurant_menu</mat-icon>
+        <span>Recipes</span>
+      </mat-list-item>
+      <mat-list-item routerLinkActive="active" routerLink="user">
+        <mat-icon>person</mat-icon>
+        <span>Account</span>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <mat-nav-list class="nav-bottom" (click)="sidenav.close()">
+      <mat-list-item routerLinkActive="active" routerLink="settings">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </mat-list-item>
+      <mat-list-item routerLinkActive="active" routerLink="logout">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Log out</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>

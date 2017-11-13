@@ -1,0 +1,70 @@
+@import '../../../styles/variables.scss';
+::ng-deep {
+  .splash-screen {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient( rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../../../assets/background.jpg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.logo-image {
+  margin: 0 auto 20px;
+  display: block;
+  text-align: center;
+  height: 90px;
+  width: auto;
+}
+
+.box {
+  opacity: 0.8;
+  background-color: whitesmoke;
+  border-radius: 10px;
+  margin: 0 auto;
+  text-align: center;
+  @media #{$screen-small} {
+    width: 100%;
+  }
+  @media #{$screen-not-small} {
+    width: 400px;    
+  }
+}
+
+h3 {
+  color: $tertiary;
+  font-weight: bold;
+  font-size: 140%;
+}
+
+.form-container {
+  padding: 10px 20px 15px;
+}
+
+.input-label {
+  display: block;
+}
+
+.form-field {
+  display: block;
+  text-align: center;
+  width: 90%;
+  margin: 0 auto 5px;
+}
+
+.btn-submit {
+  height: 40px;
+  width: 90%;
+  color: white;
+  background-color: $primary;
+}
+
+.bottom-text {
+  text-align: center;
+  color: white;
+  font-size: 110%;
+  a {
+    color: $primary;
+  }
+}

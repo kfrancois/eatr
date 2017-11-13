@@ -1,0 +1,41 @@
+<img class="logo-image" src="../../../assets/logo.png" alt="Eat shit" align="middle">
+
+<div class="box form-container">
+  <form [formGroup]='user' (ngSubmit)='onSubmit()'>
+    <h3>Register new user</h3>
+    <div>
+      <mat-form-field class="form-field">
+        <input matInput placeholder="Username" type="text" id="username" formControlName='username'>
+      </mat-form-field>
+      <div *ngIf=' user.get("username").errors?.required && user.get("username").touched'>
+        A username is required
+      </div>
+      <div *ngIf='user.get("username").errors?.minlength && user.get("username").touched'>
+        Username must be at least {{user.get("username").errors?.minlength.requiredLength }} letters
+      </div>
+      <div *ngIf='user.get("username").errors?.userAlreadyExists && user.get("username").touched'>
+        Username already exists
+      </div>
+    </div>
+
+    <div formGroupName='passwordGroup'>
+      <div>
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Password" type="password" id="password" formControlName='password'>
+        </mat-form-field>
+        <div *ngIf=' passwordControl.errors?.passwordTooShort && passwordControl.touched'>
+          Password must be at least {{passwordControl.errors?.passwordTooShort.requiredLength}} letters (got {{passwordControl.errors?.passwordTooShort.actualLength}})
+        </div>
+      </div>
+      <div>
+        <mat-form-field class="form-field">
+          <input matInput placeholder="Confirm password" type="password" id="confirmpassword" formControlName='confirmPassword'>
+        </mat-form-field>
+      </div>
+      <div *ngIf=' user.get("passwordGroup").errors?.passwordsDiffer && user.get("passwordGroup").get("confirmPassword").touched  && user.get("passwordGroup").get("password").touched'>
+        Passwords do not match
+      </div>
+    </div>
+    <button mat-raised-button class="btn-submit" type='submit' [disabled]='!user.valid'>Register</button>
+  </form>
+</div>

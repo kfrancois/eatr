@@ -1,0 +1,25 @@
+<img class="logo-image" src="../../../assets/logo.png" alt="Eat shit" align="middle">
+
+<div class="box form-container">
+  <form [formGroup]='user' (ngSubmit)='onSubmit()'>
+    <h3>Login</h3>
+
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Username" type="text" id="username" formControlName='username'>
+    </mat-form-field>
+
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Password" type="password" id="password" formControlName='password'>
+    </mat-form-field>
+
+    <div *ngIf='errorMsg'>{{errorMsg}}</div>
+    <button mat-raised-button class="btn-submit" type='submit' [disabled]='!user.valid'>Log In</button>
+  </form>
+</div>
+
+<div>
+  <p class="bottom-text">
+    Don't have an account?
+    <a routerLink="/register">Register</a>
+  </p>
+</div>

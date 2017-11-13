@@ -1,1 +1,13 @@
-<app-recipe *ngFor="let recipe of recipes" [recipe]="recipe"></app-recipe>
+<h1 class="text-center">Recipes</h1>
+
+<!--<mat-grid-list cols="2" rowHeight="fit">
+  <mat-grid-tile class="grid-tile" *ngFor="let recipe of recipes">
+    <app-recipe [recipe]="recipe"></app-recipe>
+  </mat-grid-tile>
+</mat-grid-list>
+-->
+<masonry>
+  <masonry-brick class="brick" *ngFor="let recipe of recipes">
+    <app-recipe [recipe]="recipe"></app-recipe>
+  </masonry-brick>
+</masonry>
