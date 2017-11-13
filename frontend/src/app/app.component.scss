@@ -1,12 +1,38 @@
+@import '../styles/variables.scss';
 mat-toolbar {
   position: fixed;
   top: 0;
   z-index: 999;
 }
 
+.first-button {
+  margin-right: 40px;
+}
+
+.last-button {
+  margin-left: 20px;
+}
+
+.clickable {
+  &:hover,
+   :focus {
+    background-color: $tertiary;
+    border-radius: 10%;
+  }
+}
+
+.clickable.text {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
 .logo-toolbar {
   height: 30px;
-  margin-top: 5px;
+  /* margin-top: 5px; */
 }
 
 // Fills the spaces in between elements evenly.
@@ -15,7 +41,51 @@ mat-toolbar {
   flex: 1 1 auto;
 }
 
+.occupy-space {
+  width: 40px;
+}
+
 .content {
   margin: 0 auto;
   padding: 63px 10% 0;
+}
+
+span:focus {
+  outline: none !important;
+}
+
+mat-sidenav-container {
+  min-height: 100%;
+}
+
+mat-sidenav {
+  padding-top: 56px;
+  width: 70%;
+}
+
+mat-icon {
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+mat-list-item {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 47px;
+  padding: 5px 5px 5px 20px;
+  color: gray;
+  width: 100%;
+  outline: none;
+  &.active,
+   &:active {
+    background-color: whitesmoke;
+    color: $primary;
+  }
+}
+
+.nav-bottom {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
 }

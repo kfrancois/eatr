@@ -1,8 +1,14 @@
 <mat-toolbar color="primary">
 
-  <button mat-icon-button routerLink="/">
+  <button *ngIf="!isLargeScreen()" mat-icon-button (click)="sidenav.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <button *ngIf="isLargeScreen()" class="clickable first-button" mat-icon-button routerLink="/">
     <mat-icon>home</mat-icon>
   </button>
+
+  <span *ngIf="isLargeScreen()" mat-icon-button class="clickable text" routerLink="recipes">Recipes</span>
 
   <span class="fill-remaining-space"></span>
 
@@ -12,18 +18,62 @@
 
   <span class="fill-remaining-space"></span>
 
-  <button mat-icon-button [mat-menu-trigger-for]="menu">
+  <button *ngIf="isLargeScreen()" class="clickable" mat-icon-button routerLink="/user">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+
+  <button *ngIf="isLargeScreen()" class="clickable last-button" mat-icon-button [mat-menu-trigger-for]="menu">
     <mat-icon>more_vert</mat-icon>
   </button>
+
+  <span *ngIf="!isLargeScreen()" class="occupy-space"></span>
 
 </mat-toolbar>
 
 <!-- Todo: If needed: fill menu with meaningful options -->
 <mat-menu x-position="before" #menu="matMenu">
   <button mat-menu-item routerLink="/settings">Settings</button>
-  <button mat-menu-item >Log Out</button>
+  <button mat-menu-item>Log Out</button>
 </mat-menu>
 
-<div class="content">
-  <router-outlet></router-outlet>
-</div>
+<mat-sidenav-container *ngIf="!isLargeScreen(); else largeScreen">
+
+  <mat-sidenav #sidenav>
+    <mat-nav-list class="nat-top">
+      <mat-list-item  routerLinkActive="active" routerLink="home">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </mat-list-item>
+      <mat-list-item  routerLinkActive="active" routerLink="recipes">
+        <mat-icon>restaurant_menu</mat-icon>
+        <span>Recipes</span>
+      </mat-list-item>
+      <mat-list-item  routerLinkActive="active" routerLink="user">
+        <mat-icon>person</mat-icon>
+        <span>Account</span>
+      </mat-list-item>
+    </mat-nav-list>
+
+    <mat-nav-list class="nav-bottom">
+      <mat-list-item  routerLinkActive="active" routerLink="settings">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </mat-list-item>
+      <mat-list-item  routerLinkActive="active" routerLink="logout">
+        <mat-icon>power_settings_new</mat-icon>
+        <span>Log out</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-sidenav-container>
+
+<ng-template #largeScreen>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</ng-template>
