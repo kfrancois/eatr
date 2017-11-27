@@ -1,0 +1,40 @@
+<mat-card class="card">
+  <h1 class="text-center">{{recipe?.name}}</h1>
+
+  <h2 class="text-center">{{recipe?.category}}</h2>
+
+  <img class="large-image" mat-card-image src="{{recipe?.image}}">
+
+  <div class="below-image text-center">
+      <span>
+        <mat-icon>supervisor_account</mat-icon>{{recipe?.people}} people</span>
+      <span>
+        <mat-icon>access_time</mat-icon>{{recipe?.time}}</span>
+    </div>
+
+  <div class="recipe-content">
+    <div class="ingredient-container">
+      <h3>Ingredients</h3>
+      <ul>
+        <li *ngFor="let ing of recipe?.ingredients">
+          {{ing.name}}: {{ing.amount}} {{ing.unit}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="description-container">
+      <h3>Description</h3>
+      <p>{{recipe?.description}}</p>
+    </div>
+
+    <div class="steps-container">
+      <h3>Steps</h3>
+      <ol>
+        <li *ngFor="let step of recipe?.steps">
+          {{step}}
+        </li>
+      </ol>
+    </div>
+  </div>
+
+</mat-card>

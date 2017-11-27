@@ -1,6 +1,1 @@
-<app-layout-full *ngIf="userLoggedIn() && isLargeScreen()"></app-layout-full>
-<app-layout-mobile *ngIf="userLoggedIn() && !isLargeScreen()"></app-layout-mobile>
-
-<div *ngIf="!userLoggedIn()" class="splash-screen">
-  <router-outlet></router-outlet>
-</div>
+<router-outlet></router-outlet>

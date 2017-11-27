@@ -15,13 +15,17 @@ import { LayoutMobileComponent } from './layout/layout-mobile/layout-mobile.comp
 import { AuthenticationService } from './user/shared/authentication.service';
 import { LogoutComponent } from './user/logout/logout.component';
 import { RegisterComponent } from './user/register/register.component';
+import { AutoLayoutComponent } from './layout/auto-layout/auto-layout.component';
+import { LayoutLoginComponent } from './layout/layout-login/layout-login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PageNotFoundComponent,
     LayoutFullComponent,
-    LayoutMobileComponent
+    LayoutMobileComponent,
+    AutoLayoutComponent,
+    LayoutLoginComponent
   ],
   imports: [
     BrowserModule,

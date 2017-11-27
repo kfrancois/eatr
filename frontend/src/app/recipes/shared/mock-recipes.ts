@@ -1,6 +1,6 @@
 import { Recipe } from './recipe.model';
 
-export const RECIPES: Recipe[] = [
+/*export const RECIPES: Recipe[] = [
     new Recipe('Spaghetti', 'italian', 'https://images.vrt.be/dako2017_1600s_j75/2017/03/06/d5b537ec-024d-11e7-8f5f-00163edf48dd.jpg',
         `Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
          totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
@@ -28,3 +28,4 @@ export const RECIPES: Recipe[] = [
          velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
          veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?`, []),
 ];
+*/

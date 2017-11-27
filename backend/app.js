@@ -8,16 +8,14 @@ let bluebird = require('bluebird');
 let mongoose = require('mongoose');
 let passport = require('passport');
 
-require('./models/User');
-
-require('./models/Recipe');
-require('./models/Step');
 require('./models/Ingredient');
+require('./models/Recipe');
+require('./models/User');
 
 require('./config/passport');
 
 mongoose.Promise = bluebird.Promise;
-mongoose.connect('mongodb://localhost/db', {
+mongoose.connect(process.env.DATABASE, {
   useMongoClient: true
 });
 

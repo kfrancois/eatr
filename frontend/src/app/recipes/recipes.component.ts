@@ -11,12 +11,16 @@ import { Recipe } from './shared/recipe.model';
 })
 export class RecipesComponent implements OnInit {
 
-  recipes: Recipe[] = [];
+  private _recipes: Recipe[] = [];
 
-  constructor(private recipeService: RecipeService) { }
+  constructor(private _recipeService: RecipeService) { }
 
   ngOnInit() {
-    this.recipeService.getRecipes().then(r => this.recipes = r);
+    this._recipeService.recipes.subscribe(recipes => this._recipes = recipes);
+  }
+
+  get recipes() {
+    return this._recipes;
   }
 
 }

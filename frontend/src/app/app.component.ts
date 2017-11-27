@@ -12,17 +12,7 @@ export class AppComponent {
 
   @ViewChild('sidenav') sidenav: MatSidenav;
 
-  constructor(private authService: AuthenticationService) { }
-
-  isLargeScreen() {
-    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    return width >= 768;
-  }
-
-  userLoggedIn(): boolean {
-    return this.authService.user$.getValue() !== null;
-  }
-
+  constructor() { }
 
   toggleNav() {
     this.sidenav.toggle();

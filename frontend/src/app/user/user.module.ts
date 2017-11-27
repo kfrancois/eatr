@@ -13,8 +13,8 @@ import { RegisterComponent } from './register/register.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
 
 const routes = [
-  { path: 'user', redirectTo: 'profile', pathMatch: 'full' },
-  { path: 'profile', component: OverviewComponent },
+  /*{ path: 'user', redirectTo: 'profile', pathMatch: 'full' },*/
+  { path: 'profile', component: OverviewComponent }
 ];
 
 @NgModule({

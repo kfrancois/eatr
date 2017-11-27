@@ -12,7 +12,7 @@
       <input matInput placeholder="Password" type="password" id="password" formControlName='password'>
     </mat-form-field>
 
-    <div *ngIf='errorMsg'>{{errorMsg}}</div>
+    <div class="error-msg" *ngIf='errorMsg'>{{errorMsg}}</div>
     <button mat-raised-button class="btn-submit" type='submit' [disabled]='!user.valid'>Log In</button>
   </form>
 </div>

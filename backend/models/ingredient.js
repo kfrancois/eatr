@@ -2,7 +2,8 @@ let mongoose = require('mongoose');
 
 let IngredientSchema = new mongoose.Schema({
     name: String,
-    amount: Number
+    amount: Number,
+    unit: String
 });
 
 IngredientSchema.pre('remove', function (next) {

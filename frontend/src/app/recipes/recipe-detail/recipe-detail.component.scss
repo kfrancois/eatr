@@ -1,0 +1,56 @@
+@import '../../../styles/variables.scss';
+.large-image {
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: -5px !important;
+  mask-image: linear-gradient(white, white, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.1));
+}
+
+.below-image {
+  width: 100%;
+  margin: 0 auto;
+  padding: 5px 0 20px;
+  color: lightgray;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+  font-size: 140%;
+  font-weight: 600;
+}
+
+.card.mat-card {
+  margin-top: 10px;
+  padding: 24px 0 0;
+}
+
+.mat-card-header {
+  padding: 24px 24px 0;
+}
+
+.mat-card-image {
+  padding: 0 24px;
+}
+
+.mat-card-content {
+  padding: 0 24px;
+}
+
+.recipe-content {
+  padding: 0 20px 20px;
+}
+
+.ingredient-container {
+  float: left;
+  width: 49%
+}
+
+.description-container {
+  float: left;
+  width: 49%;
+}
+
+.steps-container {
+  clear: both;
+}
+
+.mat-card-actions {
+  padding: 0 24px 24px !important;
+}

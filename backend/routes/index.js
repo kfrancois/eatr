@@ -2,47 +2,95 @@ let express = require('express');
 let router = express.Router();
 
 let mongoose = require('mongoose');
+let jwt = require('express-jwt');
 
 let Recipe = mongoose.model('Recipe');
-let Step = mongoose.model('Step');
 let Ingredient = mongoose.model('Ingredient');
+let User = mongoose.model('User');
 
+let auth = jwt({
+    secret: process.env.BACKEND_SECRET,
+    userProperty: 'payload'
+});
 
-/* GET home page. */
-router.get('/API/recipes/', function (req, res, next) {
-    let query = Recipe.find().populate('ingredients').populate('steps');
-    query.exec((err, recipes) => {
-        if (err) return err;
-        res.json(recipes);
+router.get('/API/recipes/', auth, function (req, res, next) {
+    let query = User.findById(req.payload._id).populate('recipes');
+    query.exec((err, user) => {
+        if (err) {
+            return next(err);
+        }
+        res.json(user.recipes);
     })
 });
 
-router.post('/API/recipes/', function (req, res, next) {
+router.get('/API/recipes/all', auth, function (req, res, next) {
+    let query = Recipe.find();
+    query.exec(function (err, recipes) {
+        if (err) return next(err);
+        res.json(recipes);
+    });
+});
+
+router.post('/API/recipes/', auth, function (req, res, next) {
 
     let recipe = new Recipe({
-        title: req.body.title,
-        rating: req.body.rating
+        name: req.body.name,
+        user: req.payload._id,
+        people: req.body.people,
+        category: req.body.category,
+        image: req.body.image,
+        description: req.body.description,
+        time: req.body.time,
+        steps: req.body.steps
     });
 
-    Ingredient.create(req.body.ingredients, function (err, result) {
-        if (err) {
-            return next(err);
-        }
+    Promise.all(req.body.ingredients.map(i => new Ingredient(i).save())).then(result => {
         recipe.ingredients = result;
+        recipe.save(function (err, post) {
+            if (err) {
+                return next(err);
+            }
+            User.findByIdAndUpdate({
+                '_id': req.payload._id
+            }, {
+                $push: {
+                    'recipes': recipe
+                }
+            }, function (err, result) {
+                if (err) {
+                    return next(err);
+                }
+                res.json(post)
+            });
+        })
     });
+});
 
-    Step.create(req.body.steps, function (err, result) {
+router.param('recipe', function (req, res, next, id) {
+    let query = Recipe.findById(id);
+    query.exec(function (err, recipe) {
         if (err) {
             return next(err);
         }
-        recipe.steps = result;
-    });
-
-    recipe.save(function (err, post) {
-        if (err) {
-            return next(err);
+        if (!recipe) {
+            return next(new Error('not found ' + id));
         }
-        res.json(recipe);
+        req.recipe = recipe;
+        return next();
+    });
+});
+
+router.get('/API/recipe/:recipe', function (req, res) {
+    req.recipe.populate('ingredients', function (err, rec) {
+        if (err) return next(err);
+        User.findById(rec.user, function (err, user) {
+            if (err) return next(err);
+
+            Promise.resolve(() => {
+                rec.user._id = "abc"
+            }).then(() => res.json(rec));
+        });
+
     });
 });
 
