@@ -1,0 +1,35 @@
+<h1 class="text-center">Welkom to eatr!</h1>
+
+<div class="intro-container">
+  <p>Eatr is a platform for you to share your recipes and to follow your favourite cooks and check out their latest recipes!</p>
+</div>
+
+<div class="tutorial-container">
+  <h2>How it works</h2>
+  <mat-horizontal-stepper>
+    <mat-step>
+      <ng-template matStepLabel>Create recipes</ng-template>
+      <p>Create your own recipes to become visible to others</p>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Follow others</ng-template>
+      <p>Find out what other people are making</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done!</ng-template>
+      <p>You are now using eatr! Enjoy learning to make new things and sharing your own knowledge with others!</p>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</div>

@@ -32,9 +32,12 @@
 
 </mat-toolbar>
 
-<!-- Todo: If needed: fill menu with meaningful options -->
 <mat-menu x-position="before" #menu="matMenu">
-  <span mat-menu-item routerLink="/settings">Settings</span>
+  <a href="https://github.com/kfrancois/webapps">
+    <span mat-menu-item>
+      Github
+    </span>
+  </a>
   <span mat-menu-item routerLink="/logout">Log Out</span>
 </mat-menu>
 

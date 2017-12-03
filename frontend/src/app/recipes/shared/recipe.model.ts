@@ -16,7 +16,7 @@ export class Recipe {
     private _ingredients: Ingredient[];
 
     constructor(name: string, user: User, people: number, category: string, image: string, description: string,
-        time: string, steps: string[], ingredients: Ingredient[]) {
+        time: string, steps?: string[], ingredients?: Ingredient[]) {
 
         this._name = name;
         this._user = user;
@@ -25,8 +25,8 @@ export class Recipe {
         this._image = image;
         this._description = description;
         this._time = time;
-        this._steps = steps;
-        this._ingredients = ingredients;
+        this._steps = steps || new Array<string>();
+        this._ingredients = ingredients || new Array<Ingredient>();
     }
 
     get id(): string {

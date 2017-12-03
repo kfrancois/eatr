@@ -3,7 +3,7 @@
 
   <h2 class="text-center">{{recipe?.category}}</h2>
 
-  <img class="large-image" mat-card-image src="{{recipe?.image}}">
+  <img class="large-image" mat-card-image src="{{recipe?.image}}" onError="this.src='../../../assets/noimage.png';">
 
   <div class="below-image text-center">
       <span>

@@ -3,6 +3,7 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
+import { AppMaterialModule } from '../app-material/app-material.module';
 
 const routes = [
   { path: '', component: HomeComponent }
@@ -13,6 +14,7 @@ const routes = [
     HttpModule,
     CommonModule,
     RouterModule.forChild(routes),
+    AppMaterialModule
   ],
   declarations: [HomeComponent]
 })

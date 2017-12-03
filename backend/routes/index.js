@@ -13,7 +13,7 @@ let auth = jwt({
     userProperty: 'payload'
 });
 
-router.get('/API/recipes/', auth, function (req, res, next) {
+router.get('/recipes/', auth, function (req, res, next) {
     let query = User.findById(req.payload._id).populate('recipes');
     query.exec((err, user) => {
         if (err) {
@@ -23,15 +23,15 @@ router.get('/API/recipes/', auth, function (req, res, next) {
     })
 });
 
-router.get('/API/recipes/all', auth, function (req, res, next) {
-    let query = Recipe.find();
+router.get('/recipes/all', auth, function (req, res, next) {
+    let query = Recipe.find().sort({date: -1});
     query.exec(function (err, recipes) {
         if (err) return next(err);
         res.json(recipes);
     });
 });
 
-router.post('/API/recipes/', auth, function (req, res, next) {
+router.post('/recipes/', auth, function (req, res, next) {
 
     let recipe = new Recipe({
         name: req.body.name,
@@ -41,7 +41,8 @@ router.post('/API/recipes/', auth, function (req, res, next) {
         image: req.body.image,
         description: req.body.description,
         time: req.body.time,
-        steps: req.body.steps
+        steps: req.body.steps,
+        created: Date.now()
     });
 
     Promise.all(req.body.ingredients.map(i => new Ingredient(i).save())).then(result => {
@@ -80,7 +81,7 @@ router.param('recipe', function (req, res, next, id) {
     });
 });
 
-router.get('/API/recipe/:recipe', function (req, res) {
+router.get('/recipe/:recipe', function (req, res) {
     req.recipe.populate('ingredients', function (err, rec) {
         if (err) return next(err);
         User.findById(rec.user, function (err, user) {

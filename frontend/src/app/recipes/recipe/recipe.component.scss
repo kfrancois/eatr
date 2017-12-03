@@ -28,6 +28,7 @@ mat-card-content p {
 
 .mat-card-image {
   /* mask-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6), white, white); */
+  min-height: 160px;
   padding: 0 24px;
 }
 
