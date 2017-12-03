@@ -18,11 +18,8 @@ export class LogoutComponent implements OnInit {
   constructor(private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
-    console.log('hej');
     this.authService.logout();
-    console.log('hej');
     this.router.navigate(['/login']);
-    console.log('hej');
   }
 
 }

@@ -1,5 +1,4 @@
 @import '../../styles/variables.scss';
-
 app-recipe {
   width: 100%;
   float: left;
@@ -18,5 +17,13 @@ app-recipe {
     width: 32.3%;
     margin: 15px 0.5%;
   }
-  
+}
+
+.fab-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: white;
+  height: 56px;
+  width: 56px;
 }

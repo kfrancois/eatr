@@ -1,0 +1,52 @@
+.simple-inputs-container {
+  width: 40%;
+  float: left;
+  padding-bottom: 20px;
+  .mat-form-field {
+    width: 100%;
+  }
+}
+
+.ingredients-container {
+  width: 40%;
+  float: right;
+}
+
+.single-ingredient {
+  padding-bottom: 5px;
+}
+
+.ingr-amount {
+  width: 20%;
+}
+
+.ingr-unit {
+  width: 20%;
+}
+
+.ingr-name {
+  width: 50%;
+}
+
+.steps-container {
+  width: 100%;
+  clear: both;
+  .step {
+    width: 80%;
+    margin: 0 auto;
+    padding-bottom: 5px;
+    .mat-form-field {
+      width: 100%;
+    }
+  }
+}
+
+.button-container {
+  text-align: center;
+  padding: 20px 0 100px;
+  .mat-raised-button {
+    width: 200px;
+    height: 50px;
+    font-size: 110%;
+  }
+}

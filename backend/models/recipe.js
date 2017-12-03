@@ -15,7 +15,10 @@ let RecipeSchema = new mongoose.Schema({
     ingredients: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Ingredient'
-    }]
+    }],
+    created: {
+        type: Date
+    }
 });
 
 mongoose.model('Recipe', RecipeSchema);

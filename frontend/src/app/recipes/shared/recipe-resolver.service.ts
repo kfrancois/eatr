@@ -6,8 +6,8 @@ import { Observable } from 'rxjs/Rx';
 import { RecipeService } from './recipe.service';
 
 @Injectable()
-export class RecipeResolver implements Resolve< Recipe > {
-    constructor(private recipeService: RecipeService) {}
+export class RecipeResolver implements Resolve<Recipe> {
+    constructor(private recipeService: RecipeService) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Recipe> {
         return this.recipeService.getRecipe(route.params['recipe']);
