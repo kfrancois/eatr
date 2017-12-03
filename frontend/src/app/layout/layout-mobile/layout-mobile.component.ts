@@ -8,15 +8,17 @@ import { AuthenticationService } from '../../user/shared/authentication.service'
   styleUrls: ['layout-mobile.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class LayoutMobileComponent implements OnInit {
+export class LayoutMobileComponent {
 
-  constructor(private authService: AuthenticationService) { }
+  username;
 
-  ngOnInit() {
+  constructor(private _authService: AuthenticationService) {
+    this.username = this._authService.user$.value;
   }
 
+
   userLoggedIn(): boolean {
-    return this.authService.user$.getValue() !== null;
+    return this._authService.user$.getValue() !== null;
   }
 
 }

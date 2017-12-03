@@ -18,30 +18,34 @@
   <mat-sidenav #sidenav>
 
     <div class="sidebar-header">
-      <p id="username">username</p>
+      <p id="username">{{username}}</p>
     </div>
 
     <mat-nav-list class="nat-top" (click)="sidenav.close()">
-      <mat-list-item routerLinkActive="active" routerLink="home">
+      <mat-list-item routerLinkActive="active" routerLink="/home">
         <mat-icon>home</mat-icon>
         <span>Home</span>
       </mat-list-item>
-      <mat-list-item routerLinkActive="active" routerLink="recipes">
+      <mat-list-item routerLinkActive="active" routerLink="/recipes">
         <mat-icon>restaurant_menu</mat-icon>
         <span>Recipes</span>
       </mat-list-item>
-      <mat-list-item routerLinkActive="active" routerLink="user">
+      <mat-list-item routerLinkActive="active" routerLink="/user">
         <mat-icon>person</mat-icon>
         <span>Account</span>
       </mat-list-item>
     </mat-nav-list>
 
     <mat-nav-list class="nav-bottom" (click)="sidenav.close()">
-      <mat-list-item routerLinkActive="active" routerLink="settings">
-        <mat-icon>settings</mat-icon>
-        <span>Settings</span>
+      <mat-list-item>
+        <mat-icon>web</mat-icon>
+        <a href="https://github.com/kfrancois/webapps">
+          <span mat-menu-item id="github-link">
+            Github
+          </span>
+        </a>
       </mat-list-item>
-      <mat-list-item routerLinkActive="active" routerLink="logout">
+      <mat-list-item routerLinkActive="active" routerLink="/logout">
         <mat-icon>power_settings_new</mat-icon>
         <span>Log out</span>
       </mat-list-item>

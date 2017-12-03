@@ -4,6 +4,10 @@ app-recipe {
   float: left;
 }
 
+.bricks-container {
+  padding-bottom: 50px;
+}
+
 .brick {
   @media #{$screen-small} {
     width: 99%;
@@ -19,6 +23,10 @@ app-recipe {
   }
 }
 
+.spinner {
+  margin: 150px auto 0;
+}
+
 .fab-container {
   position: fixed;
   bottom: 20px;
@@ -26,4 +34,8 @@ app-recipe {
   color: white;
   height: 56px;
   width: 56px;
+}
+
+mat-icon {
+  margin: 0;
 }

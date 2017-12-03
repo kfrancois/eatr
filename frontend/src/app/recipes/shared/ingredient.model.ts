@@ -5,7 +5,6 @@ export class Ingredient {
     private _amount: number;
     private _unit: string;
 
-
     constructor(name: string, amount: number, unit: string) {
         this._name = name;
         this._amount = amount;
@@ -15,17 +14,21 @@ export class Ingredient {
     get id(): string {
         return this._id;
     }
+
     get name(): string {
         return this._name;
     }
+
     set name(name: string) {
         this._name = name;
     }
+
     get amount(): number {
-        return this.amount;
+        return this._amount;
     }
+
     get unit(): string {
-        return this.unit;
+        return this._unit;
     }
 
     static fromJSON(json): Ingredient {

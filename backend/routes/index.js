@@ -41,7 +41,8 @@ router.post('/recipes/', auth, function (req, res, next) {
         image: req.body.image,
         description: req.body.description,
         time: req.body.time,
-        steps: req.body.steps
+        steps: req.body.steps,
+        created: Date.now()
     });
 
     Promise.all(req.body.ingredients.map(i => new Ingredient(i).save())).then(result => {

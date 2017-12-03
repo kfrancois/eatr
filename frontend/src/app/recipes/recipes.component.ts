@@ -11,12 +11,19 @@ import { Recipe } from './shared/recipe.model';
 })
 export class RecipesComponent implements OnInit {
 
+  loaded: boolean;
+
   private _recipes: Recipe[] = [];
 
   constructor(private _recipeService: RecipeService) { }
 
   ngOnInit() {
-    this._recipeService.recipes.subscribe(recipes => this._recipes = recipes);
+    this._recipeService.recipes.subscribe(recipes => {
+      setTimeout(() => {
+        this._recipes = recipes;
+        this.loaded = true;
+      }, 1000);
+    });
   }
 
   get recipes() {

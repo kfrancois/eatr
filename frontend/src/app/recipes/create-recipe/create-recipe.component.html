@@ -2,13 +2,16 @@
 
   <h1 class="text-center">New recipe</h1>
 
-  <div class="simple-inputs-container">
+  <mat-card class="simple-inputs-container">
+
+    <h2 class="text-center">Required info</h2>
+
     <mat-form-field>
-      <input matInput placeholder="Name" type="text" formControlName="name">
+      <input matInput placeholder="Name *" type="text" formControlName="name">
     </mat-form-field>
 
     <mat-form-field>
-      <input type="text" placeholder="Category" aria-label="Number" matInput formControlName="category" [matAutocomplete]="auto">
+      <input type="text" placeholder="Category *" aria-label="Number" matInput formControlName="category" [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let category of categories" [value]="category">
           {{ category }}
@@ -17,37 +20,41 @@
     </mat-form-field>
 
     <mat-form-field>
-      <input type="number" matInput min="1" placeholder="People" formControlName="people">
+      <input type="number" matInput min="1" placeholder="People *" formControlName="people">
       <mat-icon matSuffix>supervisor_account</mat-icon>
     </mat-form-field>
 
     <mat-form-field>
-      <input type="number" matInput min="0" placeholder="Time" formControlName="time">
+      <input type="number" matInput min="0" placeholder="Time *" formControlName="time">
       <span matSuffix>min.
         <mat-icon>access_time</mat-icon>
       </span>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Image URL" type="text" formControlName="image">
+      <input matInput placeholder="Image URL *" type="text" formControlName="image">
     </mat-form-field>
 
     <mat-form-field>
-      <textarea matInput #message minlength="10" maxlength="256" placeholder="Description" formControlName="description"></textarea>
+      <textarea matInput #message minlength="10" maxlength="256" placeholder="Description *" formControlName="description"></textarea>
       <mat-hint align="start">
         <strong>A short description of your recipe</strong>
       </mat-hint>
       <mat-hint align="end">{{message.value.length}} / 256</mat-hint>
     </mat-form-field>
-  </div>
+  </mat-card>
 
-  <div class="ingredients-container">
-    <h2>Ingredients</h2>
+  <mat-card class="ingredients-container">
+    <h2 class="text-center">Ingredients
+      <sup>
+        <mat-icon matTooltip="Amounts and units aren't required.">help</mat-icon>
+      </sup>
+    </h2>
     <div class="single-ingredient" formArrayName="ingredients" *ngFor="let item of recipeForm.get('ingredients').controls; let j = index ">
       <div [formGroupName]="j">
 
         <mat-form-field class="ingr-name">
-          <input matInput placeholder="Name" type="text" formControlName="ingredientName">
+          <input matInput placeholder="Ingredient *" type="text" formControlName="ingredientName">
           <span matSuffix>:
           </span>
         </mat-form-field>
@@ -68,9 +75,9 @@
 
       </div>
     </div>
-  </div>
+  </mat-card>
 
-  <div class="steps-container">
+  <mat-card class="steps-container">
     <h2 class="text-center">Steps</h2>
     <div class="step" formArrayName="steps" *ngFor="let item of recipeForm.get('steps').controls; let i = index ">
       <div [formGroupName]="i">
@@ -80,7 +87,7 @@
         </mat-form-field>
       </div>
     </div>
-  </div>
+  </mat-card>
 
   <div class="button-container">
     <button mat-raised-button color="primary" type="submit">Create Recipe!</button>

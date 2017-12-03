@@ -7,13 +7,10 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['recipe.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class RecipeComponent implements OnInit {
+export class RecipeComponent {
 
   @Input() recipe: Recipe;
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }
