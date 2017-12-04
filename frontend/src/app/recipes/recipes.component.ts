@@ -19,10 +19,8 @@ export class RecipesComponent implements OnInit {
 
   ngOnInit() {
     this._recipeService.recipes.subscribe(recipes => {
-      setTimeout(() => {
-        this._recipes = recipes;
-        this.loaded = true;
-      }, 1000);
+      this._recipes = recipes;
+      this.loaded = true;
     });
   }
 

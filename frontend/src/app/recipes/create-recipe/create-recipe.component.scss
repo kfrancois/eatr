@@ -11,11 +11,15 @@
   .mat-form-field {
     width: 100%;
   }
+  .mat-input-invalid {
+    .mat-icon, .suffix {
+      color: red;
+    }
+  }
 }
 
 .ingredients-container {
-  @media #{$screen-small} {
-  }
+  @media #{$screen-small} {}
   @media #{$screen-not-small} {
     width: 49%;
     float: right;

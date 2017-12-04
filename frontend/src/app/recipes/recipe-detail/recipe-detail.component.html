@@ -6,18 +6,18 @@
   <img class="large-image" mat-card-image src="{{recipe?.image}}" onError="this.src='../../../assets/noimage.png';">
 
   <div class="below-image text-center">
-      <span>
-        <mat-icon>supervisor_account</mat-icon>{{recipe?.people}} people</span>
-      <span>
-        <mat-icon>access_time</mat-icon>{{recipe?.time}}</span>
-    </div>
+    <span>
+      <mat-icon>supervisor_account</mat-icon>{{recipe?.people}} people</span>
+    <span>
+      <mat-icon>access_time</mat-icon>{{recipe?.time}}</span>
+  </div>
 
   <div class="recipe-content">
     <div class="ingredient-container">
       <h3>Ingredients</h3>
       <ul>
         <li *ngFor="let ing of recipe?.ingredients">
-          {{ing.name}}: {{ing.amount}} {{ing.unit}}
+          {{ing.name}}{{ing.amount ? ':' : '' }} {{ing.amount || ''}} {{ing.unit}}
         </li>
       </ul>
     </div>

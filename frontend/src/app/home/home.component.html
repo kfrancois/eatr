@@ -1,18 +1,26 @@
-<h1 class="text-center">Welkom to eatr!</h1>
+<section class="intro">
+  <div class="image">
+    <img src="../../assets/header.png" alt="">
+  </div>
+  <div class="intro-content">
+    <img src="../../assets/logo.png" alt="eatr">
+    <h2>The cookbook for everyone</h2>
+    <hr>
+    <p>Eatr is a platform for
+      <strong>you</strong> to share your recipes,
+      <strong>follow your favourite cooks</strong> and check out their latest recipes!
+    </p>
+  </div>
+</section>
 
-<div class="intro-container">
-  <p>Eatr is a platform for you to share your recipes and to follow your favourite cooks and check out their latest recipes!</p>
-</div>
-
-<div class="tutorial-container">
+<!--
+<mat-card class="tutorial-container">
   <h2>How it works</h2>
   <mat-horizontal-stepper>
     <mat-step>
       <ng-template matStepLabel>Create recipes</ng-template>
-      <p>Create your own recipes to become visible to others</p>
-      <div>
-        <button mat-button matStepperNext>Next</button>
-      </div>
+      <p class="tutorial-text">Create your own recipes to become visible to others</p>
+      <img class="tutorial-gif" src="https://thumbs.gfycat.com/TerrificBlushingGraysquirrel-size_restricted.gif" alt="">
     </mat-step>
 
     <mat-step>
@@ -32,4 +40,25 @@
       </div>
     </mat-step>
   </mat-horizontal-stepper>
+</mat-card>
+-->
+
+
+<div class="quick-links">
+  <div id="link-1" routerLink="/recipes">
+    <mat-icon mat-list-icon>restaurant_menu</mat-icon>
+    <h2 mat-line>Discover</h2>
+    <p mat-line>Find out what others are cooking</p>
+  </div>
+  <div id="link-2" routerLink="/recipes/create">
+    <mat-icon mat-list-icon>create</mat-icon>
+    <h2 mat-line>Create</h2>
+    <p mat-line>Share your own favourite recipes</p>
+  </div>
+  <div id="link-3" routerLink="/user">
+    <mat-icon mat-list-icon>person</mat-icon>
+    <h2 mat-line>Your recipes</h2>
+    <p mat-line>Take a look at what you've published</p>
+  </div>
+
 </div>

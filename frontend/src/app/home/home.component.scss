@@ -1,10 +1,73 @@
-/*
-.intro-container {
-    float: left;
-    width: 39%; 
+@import '../../styles/variables.scss';
+
+.intro {
+  @media #{$screen-small} {
+    margin-top: 20px;
+  }
+  @media #{$screen-not-small} {
+    margin-top: 50px;
+  }
+  div {
+    display: inline-block;
+  }
+  .image {
+    @media #{$screen-not-small} {
+      width: 59%;
+    }
+    img {
+      max-width: 100%;
+    }
+  }
+  .intro-content {
+    padding-top: 30px;
+    margin-left: 2%;
+    @media #{$screen-small} {
+      text-align: center;
+    }
+    @media #{$screen-not-small} {
+      width: 38%;
+    }
+    vertical-align: top;
+
+    h1, h2 {
+      font-family: Source Sans Pro,sans-serif;
+    }
+    h1 {
+      font-weight: 400;
+      font-size: 54px;
+    }
+  }
 }
 
-.tutorial-container {
-    float: right;
-    width: 60%;
-}*/
+.quick-links {
+  width: 100%;
+
+  @media #{$screen-not-small} {
+    margin-top: 50px;
+  }
+  float: left;
+  clear: both;
+  color: #555;
+  text-align: center;
+  mat-icon {
+    font-size: 100px;
+    height: 100px;
+    width: 100px;
+  }
+  div {
+    display: inline-block;
+    @media #{$screen-small} {
+      width: 98%;
+    }
+    @media #{$screen-not-small} {
+      width: 31%;
+    }
+    padding: 10px 1%;
+    &:hover,
+    &:active,
+    &:focus {
+      border-radius: 6px;
+      background-color: lightgray;
+    }
+  }
+}

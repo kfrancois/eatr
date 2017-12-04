@@ -15,10 +15,11 @@ mat-toolbar {
 }
 
 mat-sidenav-container {
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 mat-sidenav {
+  position: fixed !important;
   height: 100vh;
   width: 70%;
   box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
@@ -53,20 +54,23 @@ a {
 }
 
 #github-link {
-  text-decoration: none;
   color: gray;
   font-size: 14px;
   font-weight: 400;
   line-height: 47px;
 }
 
-mat-list-item {
+.mat-nav-list {
+  padding-top: 0 !important;
+}
+
+.mat-list-item {
   display: block;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 47px;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 47px !important;
   padding: 5px 5px 5px 20px;
-  color: gray;
+  color: gray !important;
   width: 100%;
   outline: none;
   &.active,
@@ -77,5 +81,5 @@ mat-list-item {
 }
 
 .content {
-  padding: 56px 0;
+  padding: 56px 4px;
 }

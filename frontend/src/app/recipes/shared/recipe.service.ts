@@ -38,9 +38,8 @@ export class RecipeService {
   }
 
   createRecipe(recipe): Observable<Recipe> {
-    console.log(recipe);
     return this.http.post(`${this._appUrl}/recipes`, recipe, {
       headers: new Headers({ Authorization: `Bearer ${this.auth.token}` })
-    }).map(res => res.json()); // .map(item => Recipe.fromJSON(item));
+    }).map(res => res.json()).map(item => Recipe.fromJSON(item));
   }
 }

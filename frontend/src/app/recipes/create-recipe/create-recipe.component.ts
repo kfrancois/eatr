@@ -28,49 +28,55 @@ export class CreateRecipeComponent implements OnInit {
   get ingredients(): FormArray {
     return <FormArray>this.recipeForm.get('ingredients');
   }
+  ingrCounter = 0;
   get steps(): FormArray {
     return <FormArray>this.recipeForm.get('steps');
   }
+  stepCounter = 0;
 
-  constructor(private fb: FormBuilder, private _recipeService: RecipeService,
+  constructor(private _formBuilder: FormBuilder, private _recipeService: RecipeService,
     private _router: Router, private _authService: AuthenticationService) { }
 
   ngOnInit() {
-    this.recipeForm = this.fb.group({
+    this.recipeForm = this._formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(2)]],
       category: ['', [Validators.required, Validators.minLength(2)]],
       people: ['', [Validators.required, Validators.min(0)]],
       time: ['', [Validators.required, Validators.min(0)]],
       image: ['', [Validators.required, Validators.pattern('https?://.+')]],
       description: ['', [Validators.required, Validators.minLength(10)]],
-      ingredients: this.fb.array([this.newIngredient()]),
-      steps: this.fb.array([this.newStep()])
+      ingredients: this._formBuilder.array([this.newIngredient()]),
+      steps: this._formBuilder.array([this.newStep()])
     });
 
-    this.ingredients.statusChanges.debounceTime(100).distinctUntilChanged().subscribe(data => {
-      if (data === 'VALID') {
+    this.ingredients.statusChanges.distinctUntilChanged().subscribe(data => {
+      const lastControl = this.ingredients.controls[this.ingrCounter];
+      if (lastControl.valid && lastControl.value.ingredientName !== '') {
+        this.ingrCounter++;
         this.ingredients.push(this.newIngredient());
       }
     });
 
-    this.steps.statusChanges.debounceTime(100).distinctUntilChanged().subscribe(data => {
-      if (data === 'VALID') {
+    this.steps.statusChanges.distinctUntilChanged().subscribe(data => {
+      const lastControl = this.steps.controls[this.stepCounter];
+      if (lastControl.valid && lastControl.value.step !== '') {
+        this.stepCounter++;
         this.steps.push(this.newStep());
       }
     });
   }
 
   newStep(): FormGroup {
-    return this.fb.group({
-      step: [''] // , [Validators.required, Validators.minLength(5), Validators.maxLength(256)]]
+    return this._formBuilder.group({
+      step: ['', [Validators.minLength(10), Validators.maxLength(256)]]
     });
   }
 
   newIngredient(): FormGroup {
-    return this.fb.group({
+    return this._formBuilder.group({
       amount: [''],
       unit: [''],
-      ingredientName: [''] // , [Validators.required, Validators.minLength(2)]]
+      ingredientName: ['', [Validators.minLength(2)]]
     });
   }
 
@@ -96,9 +102,12 @@ export class CreateRecipeComponent implements OnInit {
     }
     recipe.steps = steps;
 
-    this._recipeService.createRecipe(recipe).subscribe(item => {
-      console.log(item);
-    });
+
+    if (this.recipeForm.valid) {
+      this._recipeService.createRecipe(recipe).subscribe(item => {
+        this._router.navigate([`/recipes/${item.id}`]);
+      });
+    }
   }
 
 }
