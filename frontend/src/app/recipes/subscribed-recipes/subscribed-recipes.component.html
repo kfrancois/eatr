@@ -1,4 +1,4 @@
-<h1 class="text-center">Recipes</h1>
+<h1 class="text-center">Recipes by your subscriptions</h1>
 
 <!--<mat-grid-list cols="2" rowHeight="fit">
   <mat-grid-tile class="grid-tile" *ngFor="let recipe of recipes">
@@ -13,7 +13,7 @@
 </masonry>
 <mat-spinner class="spinner" *ngIf="!loaded"></mat-spinner>
 
-<h3 class="text-center" *ngIf="loaded">You've reached the end of the list!</h3>
+<h3 class="text-center" *ngIf="loaded">{{recipes.length? 'You\'ve reached the end of the list!' : 'No recipes 😓'}}</h3>
 
 <span class="fab-container">
   <button mat-fab matTooltip="Add a new recipe!" matTooltipPosition="left" routerLink="/recipes/create">

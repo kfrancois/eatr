@@ -32,9 +32,30 @@ export class RecipeService {
     // return Promise.resolve(RECIPES);
   }
 
+  get followedRecipes(): Observable<Recipe[]> {
+    return this.http.get(`${this._appUrl}/recipes/following`, {
+      headers: new Headers({
+        Authorization: `Bearer ${this.auth.token}`
+      })
+    }).map(r => r.json().map(item => Recipe.fromJSON(item)));
+    // return Promise.resolve(RECIPES);
+  }
+
+
+  getRecipes(userId): Observable<Recipe[]> {
+    return this.http.get(`${this._appUrl}/recipes/user/${userId}`, {
+      headers: new Headers({
+        Authorization: `Bearer ${this.auth.token}`
+      })
+    }).map(r => r.json().map(item => Recipe.fromJSON(item)));
+  }
+
   getRecipe(id): Observable<Recipe> {
-    return this.http.get(`${this._appUrl}/recipe/${id}`)
-      .map(response => response.json()).map(item => Recipe.fromJSON(item));
+    return this.http.get(`${this._appUrl}/recipe/${id}`, {
+      headers: new Headers({
+        Authorization: `Bearer ${this.auth.token}`
+      })
+    }).map(response => response.json()).map(item => Recipe.fromJSON(item));
   }
 
   createRecipe(recipe): Observable<Recipe> {

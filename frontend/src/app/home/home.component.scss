@@ -1,6 +1,10 @@
 @import '../../styles/variables.scss';
 
 .intro {
+
+  margin: 0 auto;
+  max-width: 1200px;
+
   @media #{$screen-small} {
     margin-top: 20px;
   }

@@ -11,10 +11,13 @@ import { LoginComponent } from './login/login.component';
 import { LogoutComponent } from './logout/logout.component';
 import { RegisterComponent } from './register/register.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
+import { RecipesModule } from '../recipes/recipes.module';
+import { MasonryModule } from 'angular2-masonry/src/module';
 
 const routes = [
   /*{ path: 'user', redirectTo: 'profile', pathMatch: 'full' },*/
-  { path: 'profile', component: OverviewComponent }
+  { path: 'profile', component: OverviewComponent },
+  { path: 'profile/:user', component: OverviewComponent }
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    AppMaterialModule
+    AppMaterialModule,
+    MasonryModule
   ], providers: [
     AuthenticationService,
     AuthGuardService

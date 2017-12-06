@@ -1,12 +1,15 @@
 <mat-toolbar color="primary" *ngIf="userLoggedIn()">
 
   <div class="toolbar-side">
-    <button class="clickable first-button" mat-icon-button routerLink="/">
+    <button class="clickable first-button" matTooltip="Home" mat-icon-button routerLink="/">
       <mat-icon>home</mat-icon>
     </button>
 
-    <button mat-icon-button class="clickable" routerLink="/recipes">
+    <button mat-icon-button class="clickable" matTooltip="Your subscriptions" routerLink="/recipes/following">
       <mat-icon>restaurant</mat-icon>
+    </button>
+    <button mat-icon-button class="clickable" matTooltip="Browse all recipes" routerLink="/recipes/all">
+      <mat-icon>explore</mat-icon>
     </button>
   </div>
 
@@ -19,11 +22,11 @@
   <span class="fill-remaining-space"></span>
 
   <div class="toolbar-side right">
-    <button class="clickable" mat-icon-button routerLink="/user/profile">
+    <button class="clickable" matTooltip="Your profile" mat-icon-button routerLink="/user/profile">
       <mat-icon>account_circle</mat-icon>
     </button>
 
-    <button class="clickable last-button" mat-icon-button [mat-menu-trigger-for]="menu">
+    <button class="clickable last-button" matTooltip="More" mat-icon-button [mat-menu-trigger-for]="menu">
       <mat-icon>more_vert</mat-icon>
     </button>
   </div>

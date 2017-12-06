@@ -23,6 +23,17 @@ router.get('/recipes/', auth, function (req, res, next) {
     })
 });
 
+router.get('/recipes/user/:user', auth, function (req, res, next) {
+    let query = User.findById(req.params.user).populate('recipes');
+    query.exec((err, user) => {
+        if (err) {
+            return next(err);
+        }
+
+        res.json(user.recipes);
+    })
+});
+
 router.get('/recipes/following', auth, function (req, res, next) {
     let query = User.findById(req.payload._id).populate({
         path: 'recipes',
@@ -86,6 +97,53 @@ router.post('/recipes/', auth, function (req, res, next) {
     });
 });
 
+router.post('/subscribe/', auth, function (req, res, next) {
+    let query = User.findByIdAndUpdate({
+        '_id': req.payload._id
+    }, {
+        $push: {
+            'following': req.body.user
+        }
+    }, function (err, result) {
+        if (err) {
+            return next(err);
+        }
+        res.json("ok");
+    });
+});
+
+router.post('/unsubscribe/', auth, function (req, res, next) {
+    let query = User.update({
+        '_id': req.payload._id
+    }, {
+        $pull: {
+            'following': req.body.user
+        }
+    }, function (err, result) {
+        if (err) {
+            return next(err);
+        }
+        res.json({
+            'response': 'ok'
+        });
+    });
+});
+
+router.post('/checkSubscription', auth, function (req, res, next) {
+    let query = User.findById(req.payload._id);
+    query.exec(function (err, result) {
+        if (result.following.indexOf(req.body.user) !== -1) {
+            res.json({
+                'result': 'subscribed'
+            })
+        } else {
+            res.json({
+                'result': 'not subscribed'
+            })
+        }
+    });
+});
+
 router.param('recipe', function (req, res, next, id) {
     let query = Recipe.findById(id);
     query.exec(function (err, recipe) {
@@ -100,7 +158,7 @@ router.param('recipe', function (req, res, next, id) {
     });
 });
 
-router.get('/recipe/:recipe', function (req, res) {
+router.get('/recipe/:recipe', auth, function (req, res) {
     req.recipe.populate('ingredients', function (err, rec) {
         if (err) return next(err);
         User.findById(rec.user, function (err, user) {
@@ -113,5 +171,7 @@ router.get('/recipe/:recipe', function (req, res) {
 
     });
 });
+
+
 
 module.exports = router;

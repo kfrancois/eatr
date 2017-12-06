@@ -1,6 +1,6 @@
 <mat-card class="card-link" routerLink="/recipes/{{recipe.id}}">
   <mat-card-header>
-    <div mat-card-avatar class="header-image" routerLink="/user"></div>
+    <div mat-card-avatar class="header-image" routerLink="/user/profile/{{recipe.user}}"></div>
     <mat-card-title>{{recipe.name}}</mat-card-title>
     <mat-card-subtitle>{{recipe.category}}</mat-card-subtitle>
   </mat-card-header>

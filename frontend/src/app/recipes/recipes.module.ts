@@ -13,9 +13,12 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { CreateRecipeComponent } from './create-recipe/create-recipe.component';
+import { SubscribedRecipesComponent } from './subscribed-recipes/subscribed-recipes.component';
 
 const routes = [
-  { path: '', component: RecipesComponent },
+  { path: '', redirectTo: 'all' },
+  { path: 'all', component: RecipesComponent },
+  { path: 'following', component: SubscribedRecipesComponent },
   { path: 'create', component: CreateRecipeComponent },
   { path: ':recipe', component: RecipeDetailComponent, resolve: { recipe: RecipeResolver } }
 ];
@@ -29,7 +32,11 @@ const routes = [
     AppMaterialModule,
     MasonryModule
   ],
-  declarations: [RecipesComponent, RecipeComponent, RecipeDetailComponent, CreateRecipeComponent],
+  exports: [
+    RecipeComponent,
+    MasonryModule
+  ],
+  declarations: [RecipesComponent, RecipeComponent, RecipeDetailComponent, CreateRecipeComponent, SubscribedRecipesComponent],
   providers: [
     RecipeService,
     RecipeResolver

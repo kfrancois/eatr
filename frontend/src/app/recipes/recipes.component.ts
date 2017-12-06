@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RecipeService } from './shared/recipe.service';
 import { Recipe } from './shared/recipe.model';
 
@@ -7,7 +7,6 @@ import { Recipe } from './shared/recipe.model';
   templateUrl: 'recipes.component.html',
   styleUrls: ['recipes.component.scss'],
   providers: [RecipeService],
-  encapsulation: ViewEncapsulation.None
 })
 export class RecipesComponent implements OnInit {
 
@@ -18,7 +17,7 @@ export class RecipesComponent implements OnInit {
   constructor(private _recipeService: RecipeService) { }
 
   ngOnInit() {
-    this._recipeService.recipes.subscribe(recipes => {
+    this._recipeService.allRecipes.subscribe(recipes => {
       this._recipes = recipes;
       this.loaded = true;
     });
@@ -27,5 +26,4 @@ export class RecipesComponent implements OnInit {
   get recipes() {
     return this._recipes;
   }
-
 }

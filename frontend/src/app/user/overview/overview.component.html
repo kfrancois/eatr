@@ -1,1 +1,35 @@
-user
+<h1 class="text-center">{{otherUser ? 'Recipes by ' + otherUsername : 'Your recipes'}}
+  <button mat-button *ngIf="otherUser && !isSubscribed" (click)="subscribe()">Subscribe</button>
+  <button mat-button *ngIf="otherUser && isSubscribed" (click)="unsubscribe()">Unsubscribe</button>
+</h1>
+
+<masonry class="bricks-container">
+  <masonry-brick class="brick" *ngFor="let recipe of recipes">
+    <mat-card class="card-link" routerLink="/recipes/{{recipe.id}}">
+      <mat-card-header>
+        <div mat-card-avatar class="header-image" routerLink="/user/profile/{{recipe.user}}"></div>
+        <mat-card-title>{{recipe.name}}</mat-card-title>
+        <mat-card-subtitle>{{recipe.category}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="{{recipe.image || '../../../assets/noimage.png'}}" onError="this.src='../../../assets/noimage.png';"
+        alt="recipe image">
+      <mat-card-content>
+        <p>{{recipe.description}}</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button routerLink="/recipes/{{recipe.id}}">READ MORE...</button>
+        <button mat-button class="button-right">SHARE</button>
+      </mat-card-actions>
+    </mat-card>
+  </masonry-brick>
+</masonry>
+
+<mat-spinner class="spinner" *ngIf="!loaded"></mat-spinner>
+
+<h3 class="text-center" *ngIf="loaded">{{recipes.length? 'You\'ve reached the end of the list!' : 'No recipes 😓'}}</h3>
+
+<span class="fab-container">
+  <button mat-fab matTooltip="Add a new recipe!" matTooltipPosition="left" routerLink="/recipes/create">
+    <mat-icon>add</mat-icon>
+  </button>
+</span>
