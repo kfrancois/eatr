@@ -23,8 +23,27 @@ router.get('/recipes/', auth, function (req, res, next) {
     })
 });
 
+router.get('/recipes/following', auth, function (req, res, next) {
+    let query = User.findById(req.payload._id).populate({
+        path: 'recipes',
+        path: 'following',
+        populate: {
+            path: 'recipes'
+        }
+    });
+    query.exec((err, user) => {
+        if (err) {
+            return next(err);
+        }
+        let recipes = [].concat(...user.following.map(u => u.recipes));
+        res.json(recipes);
+    })
+});
+
 router.get('/recipes/all', auth, function (req, res, next) {
-    let query = Recipe.find().sort({date: -1});
+    let query = Recipe.find().sort({
+        date: -1
+    });
     query.exec(function (err, recipes) {
         if (err) return next(err);
         res.json(recipes);
