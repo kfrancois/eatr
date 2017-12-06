@@ -3,7 +3,7 @@
   <button mat-button *ngIf="otherUser && isSubscribed" (click)="unsubscribe()">Unsubscribe</button>
 </h1>
 
-<masonry class="bricks-container">
+<masonry [options]="{ initLayout: true }" class="bricks-container">
   <masonry-brick class="brick" *ngFor="let recipe of recipes">
     <mat-card class="card-link" routerLink="/recipes/{{recipe.id}}">
       <mat-card-header>

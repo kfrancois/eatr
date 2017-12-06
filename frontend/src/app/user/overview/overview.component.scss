@@ -1,8 +1,8 @@
 @import '../../../styles/variables.scss';
-
-app-recipe {
-  width: 100%;
-  float: left;
+.header-image {
+  background-image: url('https://wow.aminoapps.com/static/img/user-icon-placeholder.png');
+  background-size: cover;
+  background-color: lightgray;
 }
 
 .bricks-container {
@@ -22,6 +22,46 @@ app-recipe {
     width: 32.3%;
     margin: 15px 0.5%;
   }
+}
+
+mat-card-content p {
+  text-align: justify;
+  overflow: hidden;
+  padding-bottom: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  mask-image: linear-gradient(black, black, black, transparent);
+}
+
+.card-link.mat-card {
+  padding: 0;
+  &:hover {
+    background-color: $hover;
+    cursor: pointer;
+  }
+}
+
+.mat-card-header {
+  padding: 24px 24px 0;
+}
+
+.mat-card-image {
+  /* mask-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6), white, white); */
+  min-height: 160px;
+  padding: 0 24px;
+}
+
+.mat-card-content {
+  padding: 0 24px;
+}
+
+.mat-card-actions {
+  padding: 0 24px 24px !important;
+}
+
+.button-right {
+  float: right;
 }
 
 .spinner {

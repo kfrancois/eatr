@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from '../shared/user.model';
 import { RecipeService } from '../../recipes/shared/recipe.service';
 import { SubscriptionService } from '../shared/subscription.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-overview',
@@ -22,7 +23,7 @@ export class OverviewComponent implements OnInit {
   public isSubscribed: boolean;
 
   constructor(private activatedRoute: ActivatedRoute, private _recipeService: RecipeService,
-    private _subscriptionService: SubscriptionService) {
+    private _subscriptionService: SubscriptionService, public snackBar: MatSnackBar) {
     this.activatedRoute.params.subscribe(params => {
       this._user = params['user'];
     });
@@ -52,12 +53,20 @@ export class OverviewComponent implements OnInit {
   subscribe() {
     this._subscriptionService.subscribeTo(this._user).subscribe(res => {
       this.isSubscribed = true;
+      this.openSnackBar('Subscribed!');
     });
   }
 
   unsubscribe() {
     this._subscriptionService.unsubscribeFrom(this._user).subscribe(res => {
       this.isSubscribed = false;
+      this.openSnackBar('Unsubscribed!');
+    });
+  }
+
+  openSnackBar(message: string) {
+    this.snackBar.open(message, '', {
+      duration: 2000,
     });
   }
 }
