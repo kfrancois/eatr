@@ -35,7 +35,9 @@ export class CreateRecipeComponent implements OnInit {
   stepCounter = 0;
 
   constructor(private _formBuilder: FormBuilder, private _recipeService: RecipeService,
-    private _router: Router, private _authService: AuthenticationService) { }
+    private _router: Router, private _authService: AuthenticationService) {
+    window.scrollTo(0, 0);
+  }
 
   ngOnInit() {
     this.recipeForm = this._formBuilder.group({

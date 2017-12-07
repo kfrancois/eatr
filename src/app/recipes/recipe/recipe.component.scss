@@ -31,6 +31,13 @@ mat-card-content p {
   /* mask-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6), white, white); */
   min-height: 160px;
   padding: 0 24px;
+
+  @media #{$screen-small} {
+    padding-right: 0;
+    margin-right: 0;
+    width: 100vw;
+  }
+
 }
 
 .mat-card-content {
