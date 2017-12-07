@@ -26,15 +26,17 @@ Eatr currently runs on the Heroku platform. Below are the steps required to depl
 
 3. [Browse to your app](https://dashboard.heroku.com/apps) and go to your app's settings
 
-[logo]: https://imgur.com/5sG4Itg "Settings"
+![alt text](https://imgur.com/5sG4Itg.jpg "Settings")
 
 4. Reveal Config Vars
 
-[logo]: https://imgur.com/7jDb8r3.jpg "Reveal config vars"
+
+
+![alt text](https://imgur.com/7jDb8r3.jpg "Reveal config vars")
 
 5. Enter your own backend secret and the connection string to your database.
 __Do *not* share these with anyone, and make sure your backend secret is sufficiently secure. This secret doesn't have to be readable.__
 
-[logo]: https://imgur.com/0QsiFlc "Your backend secret & database url"
+![alt text](https://imgur.com/0QsiFlc.jpg "Your backend secret & database url")
 
 6. Your website is now running!
