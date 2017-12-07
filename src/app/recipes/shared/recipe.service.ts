@@ -9,7 +9,7 @@ import { Recipe } from './recipe.model';
 @Injectable()
 export class RecipeService {
 
-  private _appUrl = 'http://localhost:4200/API';
+  private _appUrl = '/API';
   private _recipes;
 
   constructor(private http: Http, private auth: AuthenticationService) {

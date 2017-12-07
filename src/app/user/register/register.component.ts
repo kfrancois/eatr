@@ -34,9 +34,9 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.fb.group({
-      username: ['', [Validators.required, Validators.minLength(4)], this.serverSideValidateUsername()],
+      username: ['', [Validators.required, Validators.minLength(8)], this.serverSideValidateUsername()],
       passwordGroup: this.fb.group({
-        password: ['', [Validators.required, passwordValidator(4)]],
+        password: ['', [Validators.required, passwordValidator(8)]],
         confirmPassword: ['', Validators.required]
       }, { validator: comparePasswords })
     });

@@ -23,7 +23,7 @@ export class CreateRecipeComponent implements OnInit {
   public recipeForm: FormGroup;
 
   categories = ['Italian', 'Mexican', 'Asian'];
-  units = ['kg', 'l', 'spoons'];
+  units = ['g', 'kg', 'cl', 'ml', 'l', 'tsp', 'tbs'];
 
   get ingredients(): FormArray {
     return <FormArray>this.recipeForm.get('ingredients');
