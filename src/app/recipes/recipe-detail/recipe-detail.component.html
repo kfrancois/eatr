@@ -16,7 +16,7 @@
     <div class="ingredient-container">
       <h3>Ingredients</h3>
       <ul>
-        <li *ngFor="let ing of recipe?.ingredients">
+        <li class="ingredient-list" *ngFor="let ing of recipe?.ingredients">
           {{ing.name}}{{ing.amount ? ':' : '' }} {{ing.amount || ''}} {{ing.unit}}
         </li>
       </ul>
@@ -29,11 +29,16 @@
 
     <div class="steps-container">
       <h3>Steps</h3>
-      <ol>
-        <li *ngFor="let step of recipe?.steps">
-          {{step}}
-        </li>
-      </ol>
+      <div class="step-list">
+        <div class="step" *ngFor="let step of recipe?.steps; let i = index">
+          <span class="step-index">
+            {{i+1}}
+          </span>
+          <p>
+            {{step}}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
