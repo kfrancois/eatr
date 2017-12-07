@@ -36,16 +36,15 @@ app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/API', index);
 app.use('/API/users', users);
+app.use(express.static(path.join(__dirname, 'dist')));
 
-// catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+app.all('*', (req, res) => {
+  const indexFile = `${path.join(__dirname, 'dist')}/index.html`;
+  res.status(200).sendFile(indexFile);
 });
 
 // error handler
