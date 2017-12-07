@@ -144,6 +144,19 @@ router.post('/checkSubscription', auth, function (req, res, next) {
     });
 });
 
+router.post('/getUsername', auth, function (req, res, next) {
+    User.findById(req.body.user, function (err, result) {
+        if (result) {
+            res.json({
+                'username': result.username
+            });
+        } else {
+            res.json({});
+        }
+    });
+});
+
+
 router.param('recipe', function (req, res, next, id) {
     let query = Recipe.findById(id);
     query.exec(function (err, recipe) {

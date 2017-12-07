@@ -26,7 +26,6 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     this.authService.login(this.user.value.username, this.user.value.password).subscribe(val => {
       if (val) {
-        console.log(val);
         if (this.authService.redirectUrl) {
           this.router.navigateByUrl(this.authService.redirectUrl);
           this.authService.redirectUrl = undefined;

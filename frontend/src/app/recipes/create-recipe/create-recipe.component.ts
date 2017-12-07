@@ -49,7 +49,7 @@ export class CreateRecipeComponent implements OnInit {
       steps: this._formBuilder.array([this.newStep()])
     });
 
-    this.ingredients.statusChanges.distinctUntilChanged().subscribe(data => {
+    this.ingredients.statusChanges.subscribe(data => {
       const lastControl = this.ingredients.controls[this.ingrCounter];
       if (lastControl.valid && lastControl.value.ingredientName !== '') {
         this.ingrCounter++;
@@ -57,7 +57,7 @@ export class CreateRecipeComponent implements OnInit {
       }
     });
 
-    this.steps.statusChanges.distinctUntilChanged().subscribe(data => {
+    this.steps.statusChanges.subscribe(data => {
       const lastControl = this.steps.controls[this.stepCounter];
       if (lastControl.valid && lastControl.value.step !== '') {
         this.stepCounter++;

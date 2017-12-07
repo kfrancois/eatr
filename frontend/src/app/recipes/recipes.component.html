@@ -6,7 +6,7 @@
   </mat-grid-tile>
 </mat-grid-list>
 -->
-<masonry class="bricks-container">
+<masonry [useImagesLoaded]="true" class="bricks-container">
   <masonry-brick class="brick" *ngFor="let recipe of recipes">
     <app-recipe [recipe]="recipe"></app-recipe>
   </masonry-brick>

@@ -50,7 +50,7 @@
         <mat-icon matTooltip="Amounts and units aren't required.">help</mat-icon>
       </sup>
     </h2>
-    <div class="single-ingredient" formArrayName="ingredients" *ngFor="let item of recipeForm.get('ingredients').controls; let j = index ">
+    <div class="single-ingredient" formArrayName="ingredients" *ngFor="let item of recipeForm.get('ingredients')['controls']; let j = index ">
       <div [formGroupName]="j">
 
         <mat-form-field class="ingr-name">
@@ -79,7 +79,7 @@
 
   <mat-card class="steps-container">
     <h2 class="text-center">Steps</h2>
-    <div class="step" formArrayName="steps" *ngFor="let item of recipeForm.get('steps').controls; let i = index ">
+    <div class="step" formArrayName="steps" *ngFor="let item of recipeForm.get('steps')['controls']; let i = index ">
       <div [formGroupName]="i">
         <mat-form-field>
           <textarea matInput #message minlength="10" maxlength="256" placeholder="Step {{i+1}}" formControlName="step"></textarea>

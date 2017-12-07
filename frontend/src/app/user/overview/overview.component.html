@@ -1,9 +1,10 @@
-<h1 class="text-center">{{otherUser ? 'Recipes by ' + otherUsername : 'Your recipes'}}
-  <button mat-button *ngIf="otherUser && !isSubscribed" (click)="subscribe()">Subscribe</button>
-  <button mat-button *ngIf="otherUser && isSubscribed" (click)="unsubscribe()">Unsubscribe</button>
-</h1>
+<div class="text-center">
+  <h1>{{otherUser ? 'Recipes by ' + otherUsername : 'Your recipes'}}</h1>
+  <button mat-raised-button *ngIf="otherUser && !isSubscribed" (click)="subscribe()">Subscribe</button>
+  <button mat-raised-button *ngIf="otherUser && isSubscribed" (click)="unsubscribe()">Unsubscribe</button>
+</div>
 
-<masonry [options]="{ initLayout: true }" class="bricks-container">
+<masonry [useImagesLoaded]="true" class="bricks-container">
   <masonry-brick class="brick" *ngFor="let recipe of recipes">
     <mat-card class="card-link" routerLink="/recipes/{{recipe.id}}">
       <mat-card-header>

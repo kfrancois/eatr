@@ -30,4 +30,10 @@ export class SubscriptionService {
             return (item.result === 'subscribed');
         });
     }
+
+    getUsername(user): Observable<string> {
+        return this._http.post(`${this._appUrl}/getUsername`, { user: user }, {
+            headers: new Headers({ Authorization: `Bearer ${this._auth.token}` })
+        }).map(res => res.json()).map(item => item.username);
+    }
 }
