@@ -26,29 +26,36 @@ export class OverviewComponent implements OnInit {
     private _subscriptionService: SubscriptionService, public snackBar: MatSnackBar) {
     this.activatedRoute.params.subscribe(params => {
       this._user = params['user'];
-
-      if (this._user) {
+      if (typeof this._user === 'undefined') {
+        this._recipeService.recipes.subscribe(recipes => {
+          this._recipes = recipes;
+          this.loaded = true;
+        });
+      } else {
         this._subscriptionService.getUsername(this._user).subscribe(res => {
           this.otherUsername = res;
           this.otherUser = res !== JSON.parse(localStorage.getItem('currentUser')).username;
+
+          if (this.otherUser) {
+            this._recipeService.getRecipes(this._user).subscribe(recipes => {
+              this._recipes = recipes;
+              this.loaded = true;
+            });
+          } else {
+            this._recipeService.recipes.subscribe(recipes => {
+              this._recipes = recipes;
+              this.loaded = true;
+            });
+          }
         });
-        this._subscriptionService.isSubscribedto(this._user).subscribe(s => this.isSubscribed = s);
       }
+
+      this._subscriptionService.isSubscribedto(this._user).subscribe(s => this.isSubscribed = s);
+
     });
   }
 
   ngOnInit() {
-    if (this.otherUser) {
-      this._recipeService.getRecipes(this._user).subscribe(recipes => {
-        this._recipes = recipes;
-        this.loaded = true;
-      });
-    } else {
-      this._recipeService.recipes.subscribe(recipes => {
-        this._recipes = recipes;
-        this.loaded = true;
-      });
-    }
   }
 
   get recipes() {

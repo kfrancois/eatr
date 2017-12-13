@@ -22,7 +22,7 @@ export class CreateRecipeComponent implements OnInit {
 
   public recipeForm: FormGroup;
 
-  categories = ['Italian', 'Mexican', 'Asian'];
+  categories = ['Italian', 'Mexican', 'Asian', 'Dessert', 'Fast-food', 'South-American'];
   units = ['g', 'kg', 'cl', 'ml', 'l', 'tsp', 'tbs'];
 
   get ingredients(): FormArray {
